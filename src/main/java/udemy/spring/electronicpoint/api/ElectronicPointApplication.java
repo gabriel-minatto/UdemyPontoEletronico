@@ -1,4 +1,4 @@
-package udemy.spring.api.electronicpoint;
+package udemy.spring.electronicpoint.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

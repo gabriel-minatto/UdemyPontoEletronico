@@ -1,4 +1,4 @@
-package udemy.spring.api.electronicpoint;
+package udemy.spring.electronicpoint.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

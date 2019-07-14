@@ -1,8 +1,8 @@
-package udemy.spring.api.electronicpoint.entities;
+package udemy.spring.electronicpoint.api.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import udemy.spring.api.electronicpoint.enums.PerfilEnum;
+import udemy.spring.electronicpoint.api.enums.PerfilEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;

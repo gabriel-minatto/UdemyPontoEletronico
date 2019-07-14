@@ -1,4 +1,4 @@
-package udemy.spring.api.electronicpoint.entities;
+package udemy.spring.electronicpoint.api.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
