@@ -1,0 +1,33 @@
+version: '2'
+services:
+
+  pt_eletronico_mysql:
+    image: mysql:5.5
+    container_name: pt_eletronico_db
+    #command: --default-authentication-plugin=mysql_native_password
+    #volumes:
+    # - './dump:/docker-entrypoint-initdb.d'
+    ports:
+    - '3306:3306'
+    restart: always
+    volumes:
+    - pt_eletronico_datavolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    networks:
+      pt_eletronico_net:
+        ipv4_address: 172.26.0.2
+
+networks:
+  pt_eletronico_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.26.0.0/24
+        gateway: 172.26.0.1
+
+volumes:
+  pt_eletronico_datavolume:
