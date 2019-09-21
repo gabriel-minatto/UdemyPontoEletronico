@@ -1,7 +1,6 @@
 package udemy.spring.electronicpoint.api.services.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import udemy.spring.electronicpoint.api.entities.Company;
@@ -10,10 +9,9 @@ import udemy.spring.electronicpoint.api.services.CompanyService;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class CompanyServiceImpl implements CompanyService {
-
-    private static final Logger log = LoggerFactory.getLogger(CompanyServiceImpl.class);
 
     private final CompanyRepository companyRepository;
 
