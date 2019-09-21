@@ -17,7 +17,6 @@ import udemy.spring.electronicpoint.api.enums.PerfilEnum;
 import udemy.spring.electronicpoint.api.enums.TipoEnum;
 import udemy.spring.electronicpoint.api.utils.PasswordUtils;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class LancamentoRepositoryTest {
     private Long funcionarioId;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
 
         Funcionario funcionario = this.funcionarioRepository.save(obterDadosFuncionario(empresa));
@@ -51,7 +50,7 @@ public class LancamentoRepositoryTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         this.empresaRepository.deleteAll();
     }
 
@@ -64,7 +63,7 @@ public class LancamentoRepositoryTest {
 
     @Test
     public void testBuscarLancamentosPorFuncionarioIdPaginado() {
-        PageRequest page = new PageRequest(0, 10);
+        PageRequest page = PageRequest.of(0, 10);
         Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
 
         assertEquals(2, lancamentos.getTotalElements());
@@ -78,7 +77,7 @@ public class LancamentoRepositoryTest {
         return lancamento;
     }
 
-    private Funcionario obterDadosFuncionario(Empresa empresa) throws NoSuchAlgorithmException {
+    private Funcionario obterDadosFuncionario(Empresa empresa) {
         Funcionario funcionario = new Funcionario();
         funcionario.setNome("Fulano de Tal");
         funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);

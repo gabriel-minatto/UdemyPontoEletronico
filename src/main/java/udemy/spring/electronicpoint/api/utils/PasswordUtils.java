@@ -4,8 +4,7 @@ import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.util.Objects;
+import org.springframework.util.StringUtils;
 
 @NoArgsConstructor
 public class PasswordUtils {
@@ -13,19 +12,19 @@ public class PasswordUtils {
     private static final Logger log = LoggerFactory.getLogger(PasswordUtils.class);
 
     /**
-     * Gera um hash utilizando o BCrypt.
+     * Generates as hash using BCrypt.
      *
-     * @param senha
+     * @param password The password seed to generate the hash
      * @return String
      */
-    public static String gerarBCrypt(String senha) {
-        if (Objects.isNull(senha)) {
-            return senha;
+    public static String gerarBCrypt(String password) {
+        if (StringUtils.isEmpty(password)) {
+            return password;
         }
 
-        log.info("Gerando hash com o BCrypt.");
+        log.info("Generating hash with BCrypt.");
         BCryptPasswordEncoder bCryptEncoder = new BCryptPasswordEncoder();
-        return bCryptEncoder.encode(senha);
+        return bCryptEncoder.encode(password);
     }
 
 }

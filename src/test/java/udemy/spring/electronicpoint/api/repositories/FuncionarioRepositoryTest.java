@@ -13,8 +13,6 @@ import udemy.spring.electronicpoint.api.entities.Funcionario;
 import udemy.spring.electronicpoint.api.enums.PerfilEnum;
 import udemy.spring.electronicpoint.api.utils.PasswordUtils;
 
-import java.security.NoSuchAlgorithmException;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -33,7 +31,7 @@ public class FuncionarioRepositoryTest {
     private static final String CPF = "24291173474";
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
         this.funcionarioRepository.save(obterDadosFuncionario(empresa));
     }
@@ -78,7 +76,7 @@ public class FuncionarioRepositoryTest {
         assertNotNull(funcionario);
     }
 
-    private Funcionario obterDadosFuncionario(Empresa empresa) throws NoSuchAlgorithmException {
+    private Funcionario obterDadosFuncionario(Empresa empresa) {
         Funcionario funcionario = new Funcionario();
         funcionario.setNome("Fulano de Tal");
         funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
