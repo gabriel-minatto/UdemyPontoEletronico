@@ -1,4 +1,4 @@
-CREATE TABLE `empresa` (
+CREATE TABLE `company` (
   `id` bigint(20) NOT NULL,
   `cnpj` varchar(255) NOT NULL,
   `data_atualizacao` datetime NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE `empresa` (
   `razao_social` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `funcionario` (
+CREATE TABLE `employee` (
   `id` bigint(20) NOT NULL,
   `cpf` varchar(255) NOT NULL,
   `data_atualizacao` datetime NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `funcionario` (
   `empresa_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `lancamento` (
+CREATE TABLE `pointEntry` (
   `id` bigint(20) NOT NULL,
   `data` datetime NOT NULL,
   `data_atualizacao` datetime NOT NULL,
@@ -33,52 +33,52 @@ CREATE TABLE `lancamento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for table `empresa`
+-- Indexes for table `company`
 --
-ALTER TABLE `empresa`
+ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `funcionario`
+-- Indexes for table `employee`
 --
-ALTER TABLE `funcionario`
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK4cm1kg523jlopyexjbmi6y54j` (`empresa_id`);
 
 --
--- Indexes for table `lancamento`
+-- Indexes for table `pointEntry`
 --
-ALTER TABLE `lancamento`
+ALTER TABLE `pointEntry`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK46i4k5vl8wah7feutye9kbpi4` (`funcionario_id`);
 
 --
--- AUTO_INCREMENT for table `empresa`
+-- AUTO_INCREMENT for table `company`
 --
-ALTER TABLE `empresa`
+ALTER TABLE `company`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `funcionario`
+-- AUTO_INCREMENT for table `employee`
 --
-ALTER TABLE `funcionario`
+ALTER TABLE `employee`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `lancamento`
+-- AUTO_INCREMENT for table `pointEntry`
 --
-ALTER TABLE `lancamento`
+ALTER TABLE `pointEntry`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `funcionario`
+-- Constraints for table `employee`
 --
-ALTER TABLE `funcionario`
-  ADD CONSTRAINT `FK4cm1kg523jlopyexjbmi6y54j` FOREIGN KEY (`empresa_id`) REFERENCES `empresa` (`id`);
+ALTER TABLE `employee`
+  ADD CONSTRAINT `FK4cm1kg523jlopyexjbmi6y54j` FOREIGN KEY (`empresa_id`) REFERENCES `company` (`id`);
 
 --
--- Constraints for table `lancamento`
+-- Constraints for table `pointEntry`
 --
-ALTER TABLE `lancamento`
-  ADD CONSTRAINT `FK46i4k5vl8wah7feutye9kbpi4` FOREIGN KEY (`funcionario_id`) REFERENCES `funcionario` (`id`);
+ALTER TABLE `pointEntry`
+  ADD CONSTRAINT `FK46i4k5vl8wah7feutye9kbpi4` FOREIGN KEY (`funcionario_id`) REFERENCES `employee` (`id`);

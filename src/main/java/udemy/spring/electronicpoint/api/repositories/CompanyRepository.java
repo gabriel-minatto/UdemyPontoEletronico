@@ -2,11 +2,11 @@ package udemy.spring.electronicpoint.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
-import udemy.spring.electronicpoint.api.entities.Empresa;
+import udemy.spring.electronicpoint.api.entities.Company;
 
-public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     @Transactional(readOnly = true)
-    Empresa findByCnpj(String cnpj);
+    Company findByCnpj(String cnpj);
 
 }

@@ -2,7 +2,7 @@ package udemy.spring.electronicpoint.api.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import udemy.spring.electronicpoint.api.enums.PerfilEnum;
+import udemy.spring.electronicpoint.api.enums.ProfileEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,8 +14,8 @@ import java.util.Optional;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "funcionario")
-public class Funcionario implements Serializable {
+@Table(name = "employee")
+public class Employee implements Serializable {
 
     private static final long serialVersionUID = -5754246207015712518L;
 
@@ -46,7 +46,7 @@ public class Funcionario implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "perfil", nullable = false)
-    private PerfilEnum perfil;
+    private ProfileEnum perfil;
 
     @Column(name = "data_criacao", nullable = false)
     private Date dataCriacao;
@@ -55,10 +55,10 @@ public class Funcionario implements Serializable {
     private Date dataAtualizacao;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Empresa empresa;
+    private Company company;
 
-    @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Lancamento> lancamentos;
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PointEntry> entries;
 
 
     @Transient

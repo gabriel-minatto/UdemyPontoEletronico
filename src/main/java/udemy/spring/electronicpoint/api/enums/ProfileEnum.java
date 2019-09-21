@@ -1,6 +1,6 @@
 package udemy.spring.electronicpoint.api.enums;
 
-public enum PerfilEnum {
+public enum ProfileEnum {
     ROLE_ADMIN,
     ROLE_USUARIO
 }

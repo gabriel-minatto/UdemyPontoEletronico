@@ -2,7 +2,7 @@ package udemy.spring.electronicpoint.api.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import udemy.spring.electronicpoint.api.enums.TipoEnum;
+import udemy.spring.electronicpoint.api.enums.TypeEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,8 +11,8 @@ import java.util.Date;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "lancamento")
-public class Lancamento implements Serializable {
+@Table(name = "entry")
+public class PointEntry implements Serializable {
 
     private static final long serialVersionUID = 6524560251526772839L;
 
@@ -38,10 +38,10 @@ public class Lancamento implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo", nullable = false)
-    private TipoEnum tipo;
+    private TypeEnum tipo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Funcionario funcionario;
+    private Employee employee;
 
     @PreUpdate
     public void preUpdate() {

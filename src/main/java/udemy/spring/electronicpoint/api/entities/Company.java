@@ -11,8 +11,8 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "empresa")
-public class Empresa implements Serializable {
+@Table(name = "company")
+public class Company implements Serializable {
 
     private static final long serialVersionUID = 3960436649365666213L;
 
@@ -32,8 +32,8 @@ public class Empresa implements Serializable {
     @Column(name = "data_atualizacao", nullable = false)
     private Date dataAtualizacao;
 
-    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Funcionario> funcionario;
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Employee> employee;
 
     @PreUpdate
     public void preUpdate() {

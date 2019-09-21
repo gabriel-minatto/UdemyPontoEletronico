@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import udemy.spring.electronicpoint.api.entities.Empresa;
-import udemy.spring.electronicpoint.api.repositories.EmpresaRepository;
+import udemy.spring.electronicpoint.api.entities.Company;
+import udemy.spring.electronicpoint.api.repositories.CompanyRepository;
 
 import java.util.Optional;
 
@@ -21,33 +21,33 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class EmpresaServiceTest {
+public class CompanyServiceTest {
 
     @MockBean
-    private EmpresaRepository empresaRepository;
+    private CompanyRepository companyRepository;
 
     @Autowired
-    private EmpresaService empresaService;
+    private CompanyService companyService;
 
     private static final String CNPJ = "51463645000100";
 
     @Before
     public void setUp() {
-        BDDMockito.given(this.empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
-        BDDMockito.given(this.empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
+        BDDMockito.given(this.companyRepository.findByCnpj(Mockito.anyString())).willReturn(new Company());
+        BDDMockito.given(this.companyRepository.save(Mockito.any(Company.class))).willReturn(new Company());
     }
 
     @Test
     public void testBuscarEmpresaPorCnpj() {
-        Optional<Empresa> empresa = this.empresaService.findByCnpj(CNPJ);
+        Optional<Company> empresa = this.companyService.findByCnpj(CNPJ);
 
         assertTrue(empresa.isPresent());
     }
 
     @Test
     public void testSave() {
-        Empresa empresa = this.empresaService.save(new Empresa());
+        Company company = this.companyService.save(new Company());
 
-        assertNotNull(empresa);
+        assertNotNull(company);
     }
 }

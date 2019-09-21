@@ -1,6 +1,6 @@
 package udemy.spring.electronicpoint.api.enums;
 
-public enum TipoEnum {
+public enum TypeEnum {
     INICIO_TRABALHO,
     TERMINO_TRABALHO,
     INICIO_ALMOCO,
