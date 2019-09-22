@@ -58,7 +58,7 @@ public class Employee implements Serializable {
     private Company company;
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PointEntry> entries;
+    private List<EntryPoint> entries;
 
 
     @Transient

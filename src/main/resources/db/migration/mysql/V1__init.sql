@@ -21,7 +21,7 @@ CREATE TABLE `employee` (
   `empresa_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `pointEntry` (
+CREATE TABLE `entry_point` (
   `id` bigint(20) NOT NULL,
   `data` datetime NOT NULL,
   `data_atualizacao` datetime NOT NULL,
@@ -46,9 +46,9 @@ ALTER TABLE `employee`
   ADD KEY `FK4cm1kg523jlopyexjbmi6y54j` (`empresa_id`);
 
 --
--- Indexes for table `pointEntry`
+-- Indexes for table `entry_point`
 --
-ALTER TABLE `pointEntry`
+ALTER TABLE `entry_point`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK46i4k5vl8wah7feutye9kbpi4` (`funcionario_id`);
 
@@ -63,9 +63,9 @@ ALTER TABLE `company`
 ALTER TABLE `employee`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `pointEntry`
+-- AUTO_INCREMENT for table `entry_point`
 --
-ALTER TABLE `pointEntry`
+ALTER TABLE `entry_point`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
@@ -78,7 +78,7 @@ ALTER TABLE `employee`
   ADD CONSTRAINT `FK4cm1kg523jlopyexjbmi6y54j` FOREIGN KEY (`empresa_id`) REFERENCES `company` (`id`);
 
 --
--- Constraints for table `pointEntry`
+-- Constraints for table `entry_point`
 --
-ALTER TABLE `pointEntry`
+ALTER TABLE `entry_point`
   ADD CONSTRAINT `FK46i4k5vl8wah7feutye9kbpi4` FOREIGN KEY (`funcionario_id`) REFERENCES `employee` (`id`);

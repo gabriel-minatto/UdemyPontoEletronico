@@ -11,8 +11,8 @@ import java.util.Date;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "entry")
-public class PointEntry implements Serializable {
+@Table(name = "entry_point")
+public class EntryPoint implements Serializable {
 
     private static final long serialVersionUID = 6524560251526772839L;
 

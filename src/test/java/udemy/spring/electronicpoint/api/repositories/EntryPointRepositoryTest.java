@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import udemy.spring.electronicpoint.api.entities.Company;
 import udemy.spring.electronicpoint.api.entities.Employee;
-import udemy.spring.electronicpoint.api.entities.PointEntry;
+import udemy.spring.electronicpoint.api.entities.EntryPoint;
 import udemy.spring.electronicpoint.api.enums.ProfileEnum;
 import udemy.spring.electronicpoint.api.enums.TypeEnum;
 import udemy.spring.electronicpoint.api.utils.PasswordUtils;
@@ -25,10 +25,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class PointEntryRepositoryTest {
+public class EntryPointRepositoryTest {
 
     @Autowired
-    private PointEntryRepository pointEntryRepository;
+    private EntryPointRepository entryPointRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -45,8 +45,8 @@ public class PointEntryRepositoryTest {
         Employee employee = this.employeeRepository.save(obterDadosFuncionario(company));
         this.funcionarioId = employee.getId();
 
-        this.pointEntryRepository.save(obterDadosLancamentos(employee));
-        this.pointEntryRepository.save(obterDadosLancamentos(employee));
+        this.entryPointRepository.save(obterDadosLancamentos(employee));
+        this.entryPointRepository.save(obterDadosLancamentos(employee));
     }
 
     @After
@@ -56,7 +56,7 @@ public class PointEntryRepositoryTest {
 
     @Test
     public void testBuscarLancamentosPorFuncionarioId() {
-        List<PointEntry> entries = this.pointEntryRepository.findByEmployeeId(funcionarioId);
+        List<EntryPoint> entries = this.entryPointRepository.findByEmployeeId(funcionarioId);
 
         assertEquals(2, entries.size());
     }
@@ -64,17 +64,17 @@ public class PointEntryRepositoryTest {
     @Test
     public void testBuscarLancamentosPorFuncionarioIdPaginado() {
         PageRequest page = PageRequest.of(0, 10);
-        Page<PointEntry> lancamentos = this.pointEntryRepository.findByEmployeeId(funcionarioId, page);
+        Page<EntryPoint> lancamentos = this.entryPointRepository.findByEmployeeId(funcionarioId, page);
 
         assertEquals(2, lancamentos.getTotalElements());
     }
 
-    private PointEntry obterDadosLancamentos(Employee employee) {
-        PointEntry pointEntry = new PointEntry();
-        pointEntry.setData(new Date());
-        pointEntry.setTipo(TypeEnum.INICIO_ALMOCO);
-        pointEntry.setEmployee(employee);
-        return pointEntry;
+    private EntryPoint obterDadosLancamentos(Employee employee) {
+        EntryPoint entryPoint = new EntryPoint();
+        entryPoint.setData(new Date());
+        entryPoint.setTipo(TypeEnum.INICIO_ALMOCO);
+        entryPoint.setEmployee(employee);
+        return entryPoint;
     }
 
     private Employee obterDadosFuncionario(Company company) {
