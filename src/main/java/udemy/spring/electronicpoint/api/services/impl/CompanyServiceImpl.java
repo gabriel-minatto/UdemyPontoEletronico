@@ -31,4 +31,9 @@ public class CompanyServiceImpl implements CompanyService {
         log.info("Persistindo company: {}", company);
         return this.companyRepository.save(company);
     }
+
+    @Override
+    public boolean isCnpjAlreadyInUse(String cnpj) {
+        return this.findByCnpj(cnpj).isPresent();
+    }
 }

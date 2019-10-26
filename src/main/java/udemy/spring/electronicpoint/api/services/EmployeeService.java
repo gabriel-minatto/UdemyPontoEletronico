@@ -39,4 +39,12 @@ public interface EmployeeService {
      */
     Employee save(Employee employee);
 
+    /**
+     * Receives a cpf an returns true if is already in use
+     *
+     * @param cpf The cpf to be tested
+     * @return Returns true if the cpf is already in use or false if not
+     */
+    boolean isCpfAlreadyInUse(String cpf);
+
 }

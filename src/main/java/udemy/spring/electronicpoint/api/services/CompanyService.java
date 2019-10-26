@@ -23,6 +23,12 @@ public interface CompanyService {
      */
     Company save(Company company);
 
-
+    /**
+     * Receives a cnpj an returns true if is already in use
+     *
+     * @param cnpj The cnpj to be tested
+     * @return Returns true if the cnpj is already in use or false if not
+     */
+    boolean isCnpjAlreadyInUse(String cnpj);
 
 }

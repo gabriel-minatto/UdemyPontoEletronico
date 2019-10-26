@@ -78,9 +78,9 @@ public class EmployeeRepositoryTest {
 
     private Employee obterDadosFuncionario(Company company) {
         Employee employee = new Employee();
-        employee.setNome("Fulano de Tal");
-        employee.setPerfil(ProfileEnum.ROLE_USUARIO);
-        employee.setSenha(PasswordUtils.gerarBCrypt("123456"));
+        employee.setName("Fulano de Tal");
+        employee.setProfile(ProfileEnum.ROLE_USUARIO);
+        employee.setPassword(PasswordUtils.gerarBCrypt("123456"));
         employee.setCpf(CPF);
         employee.setEmail(EMAIL);
         employee.setCompany(company);
@@ -89,7 +89,7 @@ public class EmployeeRepositoryTest {
 
     private Company obterDadosEmpresa() {
         Company company = new Company();
-        company.setRazaoSocial("Company de exemplo");
+        company.setCorporateName("Company de exemplo");
         company.setCnpj("51463645000100");
         return company;
     }

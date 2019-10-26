@@ -25,7 +25,7 @@ public class CompanyRepositoryTest {
     @Before
     public void setUp() {
         Company company = new Company();
-        company.setRazaoSocial("Company de exemplo");
+        company.setCorporateName("Company de exemplo");
         company.setCnpj(CNPJ);
         this.companyRepository.save(company);
     }

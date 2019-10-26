@@ -21,38 +21,38 @@ public class EntryPoint implements Serializable {
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "data", nullable = false)
-    private Date data;
+    @Column(name = "date", nullable = false)
+    private Date date;
 
-    @Column(name = "descricao")
-    private String descricao;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "localizacao")
-    private String localizacao;
+    @Column(name = "place")
+    private String place;
 
-    @Column(name = "data_criacao", nullable = false)
-    private Date dataCriacao;
+    @Column(name = "createDate", nullable = false)
+    private Date createDate;
 
-    @Column(name = "data_atualizacao", nullable = false)
-    private Date dataAtualizacao;
+    @Column(name = "updateDate", nullable = false)
+    private Date updateDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo", nullable = false)
-    private TypeEnum tipo;
+    @Column(name = "type", nullable = false)
+    private TypeEnum type;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Employee employee;
 
     @PreUpdate
     public void preUpdate() {
-        dataAtualizacao = new Date();
+        updateDate = new Date();
     }
 
     @PrePersist
     public void prePersist() {
         final Date atual = new Date();
-        dataCriacao = atual;
-        dataAtualizacao = atual;
+        createDate = atual;
+        updateDate = atual;
     }
 
 }
