@@ -40,4 +40,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Saving employee: {}", employee);
         return employeeRepository.save(employee);
     }
+
+    @Override
+    public boolean isCpfAlreadyInUse(String cpf) {
+        log.info("Checking if cpf is already in use {}", cpf);
+        return findByCpf(cpf).isPresent();
+    }
 }
